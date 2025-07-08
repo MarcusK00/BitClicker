@@ -1,12 +1,13 @@
 ﻿@page "/"
 @using BlazeClick.Models
+@using System.Text
 @implements IDisposable
 
 <PageTitle>Home</PageTitle>
 
 <div class="center-container">
     <h1 class="title">Bit Miner</h1>
-    <h4 class="bit-numbers">@bitCode</h4>
+    <h4 class="bit-numbers">@binaryString</h4>
     <h3 class="click-count">Current Bits: @logic.BitCount</h3>
     <button class="click-button" @onclick="BtnClick">Mine</button>
 </div>
@@ -27,11 +28,15 @@
 
 @code {
     private GameLogic logic = new();
-    private string bitCode = "001000";
+    private string binaryString;
+    private int bitInt;
 
     private void BtnClick()
     {
         logic.Click();
+
+        binaryString = ConvertToBinary();
+
     }
 
     public void BuyItem(ShopItemType type)
@@ -47,7 +52,8 @@
         _timer = new RepeatingTimer(async () =>
         {
             logic.AutoMineTick();
-            
+            binaryString = ConvertToBinary();
+
             await InvokeAsync(StateHasChanged);
         });
     }
@@ -55,6 +61,33 @@
     public void Dispose()
     {
         _timer?.Dispose();
+    }
+
+    public string ConvertToBinary()
+    {
+        int temp = logic.BitCount;
+        Console.WriteLine($"Temp: { temp}");
+        StringBuilder binaryBuilder = new StringBuilder();
+        try
+        {
+            do
+            {
+                bitInt = temp % 2;
+                Console.WriteLine($"BitInt: {bitInt}");
+                temp /= 2;
+                Console.WriteLine($"Temp: {temp}");
+                binaryBuilder.Append(bitInt.ToString());
+                Console.WriteLine($"Bitstring: {binaryBuilder.ToString()}");
+            } while (temp > 0);
+        } catch(Exception ex){ Console.WriteLine(ex.Message); }
+
+        StringBuilder reversedBuilder = new StringBuilder();
+        for (int i = binaryBuilder.Length-1; i >= 0; i--)
+        {
+            reversedBuilder.Append(binaryBuilder[i]);
+        }
+        return reversedBuilder.ToString();
+
     }
 
 }
