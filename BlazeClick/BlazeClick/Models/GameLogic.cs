@@ -23,7 +23,7 @@
         }
         public void AutoMineTick()
         {
-            BitCount += MiningPower; // call this every second, for example
+            BitCount += MiningPower; 
         }
         public void BuyItem(ShopItemType type)
         {
