@@ -2,7 +2,7 @@
 
 A simple, visually appealing incremental “clicker” game built with Blazor WebAssembly. Mine bits, unlock upgrades in the shop, and watch your bit balance grow!
 
-![demoPicNew](https://github.com/user-attachments/assets/14959915-9efa-414c-993e-410aa1e19b01)
+![bitmin](https://github.com/user-attachments/assets/7016c7ba-259a-4a44-9d17-d18bc5aeb406)
 
 
 ---
