@@ -1,0 +1,40 @@
+﻿@page "/"
+@using BlazeClick.Models
+
+<PageTitle>Home</PageTitle>
+
+<div class="center-container">
+    <h1 class="title">Bit Miner</h1>
+    <h3 class="click-count">Current Bits: @logic.BitCount</h3>
+    <button class="click-button" @onclick="BtnClick">Click</button>
+</div>
+
+<div class="shop-container">
+    @foreach (var item in logic.ShopItems.Values)
+    {
+        <button class="shop-btn @(item.Name.ToLower().Replace(" ", "-"))
+                           @(logic.BitCount < item.CurrentCost ? "shop-btn-locked" : "shop-btn-unlocked")"
+                @onclick="() => BuyItem(item.Type)"
+                disabled="@(logic.BitCount < item.CurrentCost)">
+            @item.Name<br />
+            <span class="shop-cost">@item.CurrentCost bits</span><br />
+            <span>Owned: @item.Owned</span>
+        </button>
+    }
+</div>
+
+@code {
+    private GameLogic logic = new();
+
+
+    private void BtnClick()
+    {
+        logic.Click();
+    }
+
+    public void BuyItem(ShopItemType type)
+    {
+        logic.BuyItem(type);
+    }
+
+}
