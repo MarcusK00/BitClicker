@@ -160,16 +160,112 @@ body::after {
         color: #ffeb3b;
         text-shadow: 0 0 6px #ffeb3baa;
     }
+/* --- Hacking Bit Numbers / Terminal effect --- */
 .bit-numbers {
-    font-size: 1.2rem;
-    font-weight: 600;
+    font-family: 'Fira Mono', 'JetBrains Mono', 'Source Code Pro', 'Consolas', 'monospace';
+    color: #00ff89;
+    font-size: 2.1rem;
     text-align: center;
-    font-family: inherit;
-    color: white;
-    margin-bottom: 40px;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    padding: 15px 24px;
+    border-radius: 8px;
+    background: rgba(6, 20, 11, 0.7);
+    border: 1.5px solid #00ff8922;
+    box-shadow: 0 0 24px 4px #00ff8850, 0 0 2px #fff, 0 0 1px #22ffab;
+    text-shadow: 0 0 5px #00ff89cc, 0 0 16px #00ff89cc, 0 0 2px #fff, 0 0 1px #22ffab;
+    position: relative;
+    z-index: 2;
+    margin-bottom: 36px;
+    overflow: hidden;
+    /* Flicker animation for that CRT terminal feel */
+    animation: hackFlicker 0.15s infinite alternate, hackGlow 2s infinite alternate;
+    user-select: text;
 }
 
-.click-count {
+@keyframes hackFlicker {
+    0% {
+        opacity: 1;
+    }
+
+    40% {
+        opacity: 0.96;
+    }
+
+    50% {
+        opacity: 0.91;
+    }
+
+    60% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.98;
+    }
+}
+
+@keyframes hackGlow {
+    0%, 100% {
+        box-shadow: 0 0 24px 4px #00ff8840, 0 0 2px #fff, 0 0 1px #22ffab;
+    }
+
+    50% {
+        box-shadow: 0 0 36px 6px #00ff88bb, 0 0 10px #fff, 0 0 3px #22ffab;
+    }
+}
+
+/* Optional: animated scanline overlay (pure CSS) */
+.bit-numbers::before {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient( to bottom, transparent 0px, rgba(0,255,137,0.06) 1px, transparent 2px, transparent 5px );
+    mix-blend-mode: lighten;
+    opacity: 0.5;
+    z-index: 3;
+    animation: scanlines 1.5s linear infinite;
+}
+
+@keyframes scanlines {
+    0% {
+        background-position-y: 0;
+    }
+
+    100% {
+        background-position-y: 5px;
+    }
+}
+
+/* Optional: subtle terminal cursor block (pseudo blinking) */
+.bit-numbers::after {
+    content: '';
+    display: inline-block;
+    width: 0.75em;
+    height: 1.13em;
+    margin-left: 0.35em;
+    background: #00ff89cc;
+    opacity: 0.82;
+    border-radius: 2px;
+    animation: blinkCursor 1.1s steps(1) infinite;
+    vertical-align: -0.13em;
+}
+
+@keyframes blinkCursor {
+    0%, 45% {
+        opacity: 0.82;
+    }
+
+    55%, 100% {
+        opacity: 0;
+    }
+}
+
+/*.click-count {
     color: #90caf9;
     background: linear-gradient(90deg, #232526 0%, #2c5364 100%);
     border-radius: 14px;
@@ -182,7 +278,7 @@ body::after {
     min-width: 200px;
     text-align: center;
     font-family: inherit;
-}
+}*/
 
 .click-button {
     background: linear-gradient(90deg, #22ffab 0%, #00c3ff 100%);
@@ -318,10 +414,10 @@ body::after {
 }
 
 .shop-cost {
-    font-size: 0.95rem;
-    font-weight: 400;
-    color: #bbb;
-    margin-top: 6px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #181b20;
+    margin-top: 1px;
     letter-spacing: 0.5px;
 }
 
@@ -340,3 +436,16 @@ body::after {
         min-height: 54px;
     }
 }
+.bit-numbers {
+    font-size: 1.2rem; /* Was 2.1rem */
+    padding: 10px 16px; /* Was 15px 24px */
+    border-radius: 6px; /* Slightly smaller corners */
+    margin-bottom: 24px; /* Optional: smaller margin */
+}
+
+    .bit-numbers::after {
+        width: 0.55em; /* Was 0.75em */
+        height: 0.95em; /* Was 1.13em */
+        margin-left: 0.2em; /* Was 0.35em */
+        border-radius: 1px;
+    }
