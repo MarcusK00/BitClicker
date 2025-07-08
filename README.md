@@ -4,6 +4,7 @@ A simple, visually appealing incremental “clicker” game built with Blazor We
 
 ![bitmin](https://github.com/user-attachments/assets/7016c7ba-259a-4a44-9d17-d18bc5aeb406)
 
+![newdemopng](https://github.com/user-attachments/assets/f76ab9e0-76dd-47e8-86f0-d23623d24c7a)
 
 ---
 
