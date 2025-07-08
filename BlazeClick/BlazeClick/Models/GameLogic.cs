@@ -9,12 +9,14 @@
 
         public GameLogic()
         {
-        ShopItems = new Dictionary<ShopItemType, ShopItemInfo>
-            {
-        { ShopItemType.BitMiner, new ShopItemInfo(ShopItemType.BitMiner, "Bit Miner", 10, 1) },
-        { ShopItemType.GPUFarm, new ShopItemInfo(ShopItemType.GPUFarm, "GPU Farm", 75, 5) },
-        { ShopItemType.DataCenter, new ShopItemInfo(ShopItemType.DataCenter, "Data Center", 200, 10) }
-            };
+            ShopItems = new Dictionary<ShopItemType, ShopItemInfo>
+{
+    { ShopItemType.BitPower, new ShopItemInfo(ShopItemType.BitPower, "Bit Power", 20, 0, 1) },
+    { ShopItemType.BitMiner, new ShopItemInfo(ShopItemType.BitMiner, "Bit Miner", 150, 2, 0) },
+    { ShopItemType.GPUFarm, new ShopItemInfo(ShopItemType.GPUFarm, "GPU Farm", 500, 3, 0) },
+    { ShopItemType.DataCenter, new ShopItemInfo(ShopItemType.DataCenter, "Data Center", 1350, 10, 0) }
+};
+
         }
 
         public void Click()
@@ -32,6 +34,7 @@
             {
                 BitCount -= item.CurrentCost;
                 item.Owned++;
+                Strength += item.ClickStrength;
                 MiningPower += item.MiningPower;
             }
         }
