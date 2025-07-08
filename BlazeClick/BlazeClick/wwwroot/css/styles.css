@@ -1,5 +1,7 @@
 ﻿body {
-    background: linear-gradient(135deg, #181b20 0%, #222f3e 100%);
+    background: linear-gradient(135deg, #181b20 0%, #222f3e 100%), linear-gradient(-45deg, #1a222d 0%, #181b20 100%);
+    background-size: 200% 200%, 200% 200%;
+    background-blend-mode: lighten;
     min-height: 100vh;
     font-family: 'Fira Mono', 'JetBrains Mono', 'Source Code Pro', 'Consolas', 'monospace';
     margin: 0;
@@ -7,6 +9,100 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+    overflow-x: hidden;
+    z-index: 0;
+    animation: waveBG 8s ease-in-out infinite alternate;
+}
+
+@keyframes waveBG {
+    0% {
+        background-position: 0% 50%, 100% 50%;
+    }
+
+    100% {
+        background-position: 100% 50%, 0% 50%;
+    }
+}
+
+/* Animated SVG wave overlay for extra effect */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    pointer-events: none;
+    background: url("data:image/svg+xml;utf8,<svg width='2000' height='400' xmlns='http://www.w3.org/2000/svg'><path d='M0 250 Q 250 350 500 250 T 1000 250 T 1500 250 T 2000 250 V400 H0 Z' fill='%2322ffab22' /></svg>");
+    background-repeat: repeat-x;
+    background-size: 200% 400px;
+    opacity: 0.13;
+    animation: bgWaves 14s linear infinite alternate;
+}
+
+@keyframes bgWaves {
+    0% {
+        background-position-x: 0;
+    }
+
+    100% {
+        background-position-x: 100vw;
+    }
+}
+
+/* --- Glowy Floating Stars --- */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 0;
+    /* 20 glowy stars, varied colors */
+    background: radial-gradient(circle at 12% 18%, #fff 2px, transparent 2.7px), radial-gradient(circle at 42% 88%, #a5f4ff 1.4px, transparent 2.3px), radial-gradient(circle at 65% 40%, #fff 2.5px, transparent 3.2px), radial-gradient(circle at 74% 19%, #22ffab 1.8px, transparent 2.7px), radial-gradient(circle at 93% 65%, #fff 1.5px, transparent 2.4px), radial-gradient(circle at 83% 94%, #fff 2.1px, transparent 3.1px), radial-gradient(circle at 20% 33%, #ffeb3b 2.1px, transparent 3px), radial-gradient(circle at 89% 55%, #fff 2.4px, transparent 3.2px), radial-gradient(circle at 50% 11%, #fff 3.2px, transparent 4.2px), radial-gradient(circle at 74% 76%, #a5f4ff 1.7px, transparent 2.5px), radial-gradient(circle at 10% 70%, #fff 2.2px, transparent 3.1px), radial-gradient(circle at 31% 65%, #fff 1.4px, transparent 2.2px), radial-gradient(circle at 15% 90%, #ffeb3b 1.7px, transparent 2.5px), radial-gradient(circle at 92% 15%, #fff 1.9px, transparent 2.8px), radial-gradient(circle at 79% 41%, #a5f4ff 2.1px, transparent 3.1px), radial-gradient(circle at 60% 85%, #22ffab 1.5px, transparent 2.5px), radial-gradient(circle at 47% 59%, #fff 2.5px, transparent 3.5px), radial-gradient(circle at 18% 76%, #fff 2px, transparent 2.8px), radial-gradient(circle at 86% 28%, #fff 1.3px, transparent 2.1px), radial-gradient(circle at 98% 35%, #fff 2.2px, transparent 3.2px);
+    background-size: 100vw 100vh;
+    background-repeat: no-repeat;
+    opacity: 0.66;
+    filter: blur(0.2px) drop-shadow(0 0 8px #fff9) drop-shadow(0 0 12px #22ffab77) drop-shadow(0 0 5px #a5f4ffcc);
+    animation: starsFloat 40s linear infinite alternate, starsTwinkle 8s linear infinite alternate;
+    will-change: opacity, background-position;
+}
+
+/* Make stars float by animating background-position for each layer */
+@keyframes starsFloat {
+    0% {
+        background-position: 0vw 0vh, 0vw 0vh, 0vw 0vh, 0vw 0vh, 0vw 0vh, 0vw 0vh, 0vw 0vh, 0vw 0vh, 0vw 0vh, 0vw 0vh, 0vw 0vh, 0vw 0vh, 0vw 0vh, 0vw 0vh, 0vw 0vh, 0vw 0vh, 0vw 0vh, 0vw 0vh, 0vw 0vh, 0vw 0vh;
+    }
+
+    100% {
+        background-position: 4vw 9vh, -4vw -7vh, 6vw 11vh, -3vw -10vh, 8vw 8vh, -8vw -10vh, 9vw 13vh, -6vw -13vh, 11vw 6vh, -7vw 8vh, 7vw -7vh, -7vw 7vh, 6vw -6vh, -8vw 11vh, 4vw -12vh, -6vw 9vh, 7vw -7vh, -5vw 5vh, 3vw -6vh, -7vw 12vh;
+    }
+}
+
+@keyframes starsTwinkle {
+    0% {
+        opacity: 0.72;
+    }
+
+    20% {
+        opacity: 0.81;
+    }
+
+    50% {
+        opacity: 0.97;
+    }
+
+    70% {
+        opacity: 0.83;
+    }
+
+    100% {
+        opacity: 0.90;
+    }
 }
 
 .center-container {
@@ -23,6 +119,8 @@
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
     padding: 48px 32px;
     border: 1px solid rgba(255,255,255,0.10);
+    position: relative;
+    z-index: 1;
 }
 
 .title {
