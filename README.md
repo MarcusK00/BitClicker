@@ -3,7 +3,7 @@
 A simple, visually appealing incremental “clicker” game built with Blazor WebAssembly. Mine bits, unlock upgrades in the shop, and watch your bit balance grow!
 
 <p align="center">
-  <img src="BlazorWASM/BlazeClick/BlazeClick/wwwroot/images/demo.gif" alt="BitClicker Demo" width="600"/>
+  <img src="BlazorWASM/BlazeClick/BlazeClick/wwwroot/Images/demo.gif" alt="BitClicker Demo" width="600"/>
 </p>
 
 ---
