@@ -1,4 +1,4 @@
-# BitClicker
+# BitMiner
 
 A simple, visually appealing incremental “clicker” game built with Blazor WebAssembly. Mine bits, unlock upgrades in the shop, and watch your bit balance grow!
 
