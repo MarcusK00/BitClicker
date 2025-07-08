@@ -1,6 +1,7 @@
 # BitClicker
 
 A simple, visually appealing incremental “clicker” game built with Blazor WebAssembly. Mine bits, unlock upgrades in the shop, and watch your bit balance grow!
+![BitClicker Demo](https://raw.githubusercontent.com/YourUser/BitClicker/main/BlazorWASM/BlazeClick/BlazeClick/wwwroot/Images/demo.gif)
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/MarcusK00/BitClicker/main/BlazorWASM/BlazeClick/BlazeClick/wwwroot/Images/demo.gif" alt="BitClicker Demo" width="600"/>
