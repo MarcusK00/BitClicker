@@ -2,6 +2,7 @@
 {
     public class GameLogic
     {
+        
         public int BitCount { get; set; } = 0;
         public int Strength { get; set; } = 1;
         public int MiningPower { get; set; } = 0;
