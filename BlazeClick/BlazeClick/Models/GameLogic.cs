@@ -6,7 +6,7 @@
         public int BitCount { get; set; } = 0;
         public int Strength { get; set; } = 1;
         public int MiningPower { get; set; } = 0;
-        public Dictionary<ShopItemType, ShopItemInfo> ShopItems { get; set; }
+        public Dictionary<ShopItemType, ShopItemInfo> ShopItems { get; set; } // Dic of items.
 
         public GameLogic()
         {
