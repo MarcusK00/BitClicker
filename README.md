@@ -19,9 +19,9 @@ A simple, visually appealing incremental “clicker” game built with Blazor We
   Your bit balance and purchased upgrades are stored in browser Local Storage.
 - **Work in Progress**  
   New features and polish coming soon:
-  - Auto Mining
   - More Shop Items
-  - Minigame
+  - Minigames
+  - Progression System
 ---
 
 ## 🛠️ Tech Stack
