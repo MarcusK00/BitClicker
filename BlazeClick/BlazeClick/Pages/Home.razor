@@ -42,11 +42,11 @@
 
     protected override void OnInitialized()
     {
-        // Create the timer and pass a callback to execute every second
+        // execute every second
         _timer = new RepeatingTimer(async () =>
         {
             logic.AutoMineTick();
-            // Since this callback runs off the UI thread, use InvokeAsync to update UI
+            
             await InvokeAsync(StateHasChanged);
         });
     }
