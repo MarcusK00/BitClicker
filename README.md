@@ -14,13 +14,12 @@ A simple, visual incremental “clicker” game built with Blazor WebAssembly. M
   Spend bits on passive and active upgrades (e.g. Auto-Miners, Bit Multipliers).
 - **Responsive UI**  
   Built with Blazor components and custom CSS for smooth animations.
-- **Persistent Progress**  
-  Your bit balance and purchased upgrades are stored in browser Local Storage.
 - **Work in Progress**  
   New features and polish coming soon:
   - More Shop Items
   - Minigames
   - Progression System
+  - Make bit balance and purchased upgrades store in browser Local Storage.
 ---
 
 ## 🛠️ Tech Stack
